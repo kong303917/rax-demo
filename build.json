@@ -1,0 +1,47 @@
+{
+  "plugins": [
+    [
+      "build-plugin-rax-app",
+      {
+        "targets": ["web", "weex", "kraken", "miniapp", "wechat-miniprogram"]
+      }
+    ],
+    [
+      "build-plugin-rax-faas",
+      {
+        "aliyunConfig": {
+          "id": "zkc",
+          "region": "cn-hangzhou"
+        },
+        "functionGroup": {
+          "name": "raxFaaS",
+          "root": "src/api",
+          "functions": {
+            "user": {
+              "path": "user"
+            }
+          }
+        }
+      }
+    ],
+    [
+      "rax-plugin-pwa", {
+        "snapshot": true,
+        "serviceWorker": {
+          "preCacheUrlList": ["https://img.alicdn.com/tfs/rax.png"],
+          "savedCachePatternList": ["/my-app\/.+/i"]
+        },
+        "manifest": {
+          "name": "My Progressive Web App",
+          "short_name": "MyPWA",
+          "description": "My awesome Progressive Web App!",
+          "background_color": "#ffffff",
+          "icon": "src/public/icon.png",
+          "start_url": "//market.m.taobao.com/app/mtb/rax-pwa-demo/web/index.html#/",
+          "display": "standalone"
+        }
+      }
+    ],
+    "build-plugin-rax-ssr"
+  ]
+}
